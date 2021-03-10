@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title> Inquiry From</title>
+ <link rel="stylesheet" type="text/css" href="formstyle.css">
+ 
+ <style>
+  html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #131F34;
+}
+ header{ 
+    text-align: center;   
+    color: White;
+    background-color: rgb(0,0,0,.2);
+
+  }
+  .logo{
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+        }  
+ </style>
+</head>
+<body>
+ <header>
+  <img class="logo" src="Capture.png" height="120px"; width:"120px";>
+ </header>
+  <form action="https://www.youtube.com/" method="post" autocomplete="off" name="google-sheet">      
+  <input name="name" type="text" class="feedback-input" placeholder="Name" />   
+  <input name="email" type="email" class="feedback-input" placeholder="Email" />
+  <input name="phone" type="tel" class="feedback-input" placeholder="Phone number" />
+  <textarea name="comment" class="feedback-input" placeholder="Comment"></textarea>
+  <input type="submit" value="SUBMIT"/>
+</form>
+  <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx3cPkZWX7ba-805AsdpDAwz2ahVWqd8lcVRe_X9Lr1KOfzSkYp/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+         </script>       
+</body>
+</html>
